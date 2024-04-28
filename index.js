@@ -32,10 +32,41 @@ async function run() {
       res.send(result);
     });
 
+    app.get(`/spotDetails/:id`, async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await spotCollection.findOne(query);
+      res.send(result);
+    });
+
     app.post(`/spotDetails`, async (req, res) => {
       const newSpot = req.body;
       console.log(newSpot);
       const result = await spotCollection.insertOne(newSpot);
+      res.send(result);
+    });
+
+    app.put(`/spotDetails/:id`, async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const option = { upsert: true };
+      const updatedSpot = req.body;
+      const spot = {
+        $set: {
+          averagecost: updatedSpot.averagecost,
+          username: updatedSpot.username,
+          Spotname: updatedSpot.Spotname,
+          imgurl: updatedSpot.imgurl,
+          countryname: updatedSpot.countryname,
+          location: updatedSpot.location,
+          desc: updatedSpot.desc,
+          seasonality: updatedSpot.seasonality,
+          totalVisitorsPerYear: updatedSpot.totalVisitorsPerYear,
+          traveltime: updatedSpot.traveltime,
+          useremail: updatedSpot.useremail,
+        },
+      };
+      const result = await spotCollection.updateOne(filter, spot, option);
       res.send(result);
     });
 
