@@ -38,6 +38,20 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result);
     });
+    app.get(`/country/:name`, async (req, res) => {
+      const name = req.params.name;
+      const query = { countryname : name};
+      const cursor = spotCollection.find(query);
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+     app.get(`/countries/:id`, async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await coutryCollection.findOne(query);
+      res.send(result);
+     });
 
     app.get(`/spotDetails/:id`, async (req, res) => {
       const id = req.params.id;
