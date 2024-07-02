@@ -1,7 +1,7 @@
 
 # TrekTide.com
 
-- # Live Site Url : https://blog-website-aef2b.web.app/
+- # Live Site Url : https://tourism-project-31f12.web.app
 
 ## 🚀 Run this to your local machine
 
