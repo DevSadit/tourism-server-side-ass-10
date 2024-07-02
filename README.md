@@ -25,7 +25,7 @@ Make sure you have the following installed on your machine:
 2. **Navigate to the project directory:**
 
     ```bash
-    cd fitness-tracker-server-ass-12
+    cd tourism-server-side-ass-10
     ```
 
 3. **Install dependencies:**
